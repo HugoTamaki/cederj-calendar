@@ -1,0 +1,17 @@
+{
+  "css": [
+    "lib/bootstrap-css-only/css/bootstrap.min",
+    "lib/font-awesome/css/font-awesome.min",
+    "sass/home"
+  ],
+
+  "js": [
+    "lib/angular/angular.min",
+    "lib/angular-ui-router/release/angular-ui-router.min",
+    "lib/angular-local-storage/dist/angular-local-storage.min",
+    "js/app",
+    "js/controllers/*",
+    "js/services/*",
+    "js/factories/*"
+  ]
+}
