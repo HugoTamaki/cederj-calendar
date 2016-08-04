@@ -7,6 +7,10 @@ app.controller('DisciplineListCtrl', [
             $state,
             CoursesService) {
 
-    CoursesService.getCourses()
+    $scope.selectedCourse = {}
+
+    CoursesService.init()
+
+    $scope.courses = CoursesService.courses
   }
 ])
