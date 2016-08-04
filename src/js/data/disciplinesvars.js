@@ -1,0 +1,1 @@
+window.disciplines = [{"id":"1","name":"CPW","course_id":"1"}]

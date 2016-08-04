@@ -97,9 +97,13 @@ gulp.task('web:run', function (callback) {
     'moveCSS',
     'clearCSS',
 
+    'setCourseData',
+    'setDisciplineData',
+
     'moveJS',
     'moveAndConcatJS',
     // 'replaceJS',
+
 
     'inject',
     'watch',
@@ -112,6 +116,48 @@ gulp.task('web:run', function (callback) {
 gulp.task('clean', function() {
   return gulp.src(paths.dist.files).pipe(vinylPaths(del))
 })
+
+/*
+ * DATA
+ */
+
+gulp.task('setCourseData', function () {
+  function readCourseData() {
+    var coursesJSON = JSON.parse(fs.readFileSync('data/courses.json', 'utf8'))
+
+    return coursesJSON.courses
+  }
+
+  var patterns = [
+    {
+      match: 'courseData',
+      replacement: readCourseData()
+    }
+  ]
+
+  return gulp.src('data/coursesvars.js')
+             .pipe(plugins.replaceTask({ patterns: patterns }))
+             .pipe(gulp.dest('src/js/data'))
+});
+
+gulp.task('setDisciplineData', function () {
+  function readDisciplineData() {
+    var disciplinesJSON = JSON.parse(fs.readFileSync('data/disciplines.json', 'utf8'))
+
+    return disciplinesJSON.disciplines
+  }
+
+  var patterns = [
+    {
+      match: 'disciplineData',
+      replacement: readDisciplineData()
+    }
+  ]
+
+  return gulp.src('data/disciplinesvars.js')
+             .pipe(plugins.replaceTask({ patterns: patterns }))
+             .pipe(gulp.dest('src/js/data'))
+});
 
 /*
  * IMAGES

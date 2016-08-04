@@ -6,6 +6,7 @@ app.controller('MainCtrl', [
             $state) {
 
     $scope.title = 'njnen'
+
     $scope.disciplinesList = function () {
       $state.go('disciplines-list')
     }

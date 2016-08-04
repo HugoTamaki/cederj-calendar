@@ -1,11 +1,12 @@
 app.controller('DisciplineListCtrl', [
   '$scope',
   '$state',
+  'CoursesService',
 
   function ($scope,
-            $state) {
+            $state,
+            CoursesService) {
 
-
-
+    CoursesService.getCourses()
   }
 ])
