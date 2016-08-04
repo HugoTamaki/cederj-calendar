@@ -1,3 +1,19 @@
 <div class="container">
   <h1>My disciplines</h1>
+
+  <select id="repeatSelect" ng-options="course as course.name for course in courses" ng-model="selectedCourse" class="form-control">
+  </select>
+
+  <div class="row" ng-if="selectedCourse">
+    <div class="col-lg-3" ng-repeat="discipline in selectedCourse.disciplines">
+      <div class="discipline-block">
+        <h2>{{ discipline.name }}</h2>
+
+        <p>
+          Local: {{ discipline.local }}
+        </p>
+        <p>Hora: {{ discipline.time }}</p>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,1 +1,1 @@
-window.courses = [{"id":"1","name":"Tecnologia em Sistemas de Computação"}]
+window.courses = [{"name":"Geografia"},{"name":"Pedagogia"},{"name":"Tecnólogo em Segurança Pública e Social"},{"name":"Tecnologia em Gestão de Turísmo"},{"name":"Tecnologia em Sistemas de Computação"}]
