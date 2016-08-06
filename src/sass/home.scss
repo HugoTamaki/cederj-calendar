@@ -2,10 +2,14 @@ body {
   font-weight: bold;
 }
 
-.discipline-block {
-  border: 1px solid black;
-  border-radius: 5px;
-  min-height: 215px;
-  margin: 5px 0;
-  padding: 0px 10px;
+.discipline-content {
+  margin-top: 10px;
+  
+  .discipline-block {
+    border: 1px solid black;
+    border-radius: 5px;
+    min-height: 215px;
+    margin: 5px 0;
+    padding: 0px 10px;
+  }
 }

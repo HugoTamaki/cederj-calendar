@@ -1,18 +1,29 @@
 <div class="container">
-  <h1>My disciplines</h1>
+  <div class="row discipline-content">
+    <div class="col-lg-12">
+      <div class="form-group">
+        <select id="repeatSelect" ng-options="course as course.name for course in coursesService.courses" ng-model="selectedCourse.course" class="form-control" ng-change="updateSelectedCourse()">
+          <option value="">Selecione o seu curso</option>
+        </select>
+      </div>
 
-  <select id="repeatSelect" ng-options="course as course.name for course in courses" ng-model="selectedCourse" class="form-control">
-  </select>
+      <div class="form-group">
+        <input type="text" ng-model="coursesService.term" class="form-control" placeholder="Pesquisar" ng-change="updateDisciplines()">
+      </div>
 
-  <div class="row" ng-if="selectedCourse">
-    <div class="col-lg-3" ng-repeat="discipline in selectedCourse.disciplines">
-      <div class="discipline-block">
-        <h2>{{ discipline.name }}</h2>
+      <h1 ng-if="selectedCourse.course">{{ selectedCourse.course.name }}</h1>
 
-        <p>
-          Local: {{ discipline.local }}
-        </p>
-        <p>Hora: {{ discipline.time }}</p>
+      <div class="row" ng-if="disciplines.length > 0">
+        <div class="col-lg-3" ng-repeat="discipline in disciplines">
+          <div class="discipline-block">
+            <h2>{{ discipline.name }}</h2>
+
+            <p>
+              Local: {{ discipline.local }}
+            </p>
+            <p>Hora: {{ discipline.time }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

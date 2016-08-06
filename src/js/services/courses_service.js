@@ -5,6 +5,8 @@ app.service('CoursesService', [
 
     var CoursesService = {
       courses: [],
+      selectedCourse: null,
+      term: '',
       init: function () {
         var courses = DataService.courses,
             disciplines = DataService.disciplines,
@@ -23,6 +25,15 @@ app.service('CoursesService', [
         })
 
         return course
+      },
+
+      getFilteredDisciplines: function (course) {
+        var search = this.term.split(" ").join("|")
+        var regexp = new RegExp(search, "i")
+
+        return _(course.disciplines).filter(function (discipline) {
+          return regexp.test(discipline.name)
+        })
       }
     }
 
