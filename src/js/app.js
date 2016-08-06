@@ -17,8 +17,9 @@ app.config([
 
     $stateProvider
       .state('home', {
-        url: '/',
-        controller: 'MainCtrl'
+        url: '/home',
+        controller: 'HomeCtrl',
+        templateUrl: '../templates/home.html'
       })
 
       .state('disciplines-list', {
