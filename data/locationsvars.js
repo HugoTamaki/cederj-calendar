@@ -1,0 +1,1 @@
+window.locations = @@locationData

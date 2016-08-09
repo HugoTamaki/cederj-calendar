@@ -97,6 +97,7 @@ gulp.task('web:run', function (callback) {
     'moveCSS',
     'clearCSS',
 
+    'setLocationData',
     'setCourseData',
     'setDisciplineData',
 
@@ -120,6 +121,25 @@ gulp.task('clean', function() {
 /*
  * DATA
  */
+
+gulp.task('setLocationData', function () {
+  function readLocationData() {
+    var locationsJSON = JSON.parse(fs.readFileSync('data/locations.json', 'utf8'))
+
+    return locationsJSON.locations
+  }
+
+  var patterns = [
+    {
+      match: 'locationData',
+      replacement: readLocationData()
+    }
+  ]
+
+  return gulp.src('data/locationsvars.js')
+             .pipe(plugins.replaceTask({ patterns: patterns }))
+             .pipe(gulp.dest('src/js/data'))
+}); 
 
 gulp.task('setCourseData', function () {
   function readCourseData() {
