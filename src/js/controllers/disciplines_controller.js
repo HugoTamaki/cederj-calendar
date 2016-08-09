@@ -7,23 +7,31 @@ app.controller('DisciplineListCtrl', [
             $state,
             CoursesService) {
 
-    $scope.selectedCourse = {
-      course: null
+    $scope.selected = {
+      location: '',
+      course: ''
     }
 
+    $scope.courses = []
     $scope.disciplines = []
 
     $scope.coursesService = CoursesService
     CoursesService.init()
 
+    $scope.updateSelectedLocation = function () {
+      $scope.coursesService.term = ''
+      $scope.courses = $scope.selected.location.courses
+    }
+
     $scope.updateSelectedCourse = function () {
-      $scope.disciplines = $scope.selectedCourse.course ?
-                              $scope.selectedCourse.course.disciplines :
+      $scope.coursesService.term = ''
+      $scope.disciplines = $scope.selected.course ?
+                              $scope.selected.course.disciplines :
                               []
     }
 
     $scope.updateDisciplines = function () {
-      $scope.disciplines = CoursesService.getFilteredDisciplines($scope.selectedCourse.course)
+      $scope.disciplines = CoursesService.getFilteredDisciplines($scope.selected.course)
     }
   }
 ])

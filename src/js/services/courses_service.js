@@ -8,13 +8,28 @@ app.service('CoursesService', [
       selectedCourse: null,
       term: '',
       init: function () {
-        var courses = DataService.courses,
-            disciplines = DataService.disciplines,
+        var locations = DataService.locations,
             self = this
 
-        this.courses = courses.map(function (course) {
-          return self.getDisciplines(course)
+        this.locations = locations.map(function (location) {
+          return self.getCourses(location)
         })
+        
+        this.locations.forEach(function (location) {
+          location.courses.map(function (course) {
+            return self.getDisciplines(course)
+          })
+        })
+      },
+
+      getCourses: function (location) {
+        var courses = DataService.courses
+
+        location.courses = courses.filter(function (course) {
+          return course.location === location.name
+        })
+
+        return location
       },
 
       getDisciplines: function (course) {

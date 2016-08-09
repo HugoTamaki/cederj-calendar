@@ -8,8 +8,24 @@ body {
   .discipline-block {
     border: 1px solid black;
     border-radius: 5px;
-    min-height: 215px;
+    min-height: 250px;
     margin: 5px 0;
     padding: 0px 10px;
+
+    .header {
+      margin: 10px 0;
+      font-size: 22px;
+      line-height: 23px;
+    }
+
+    .ap {
+      .title {
+        font-size: 19px;
+      }
+      p {
+        margin: 0;
+        line-height: 15px;
+      }
+    }
   }
 }
