@@ -36,7 +36,7 @@ app.service('CoursesService', [
         var disciplines = DataService.disciplines
 
         course.disciplines = disciplines.filter(function (discipline) {
-          return discipline.course === course.name
+          return discipline.course === course.name && discipline.location === course.location
         })
 
         return course

@@ -27,5 +27,14 @@ app.config([
         controller: 'DisciplineListCtrl',
         templateUrl: '../templates/disciplines_list.html'
       })
+
+      .state('discipline', {
+        url: '/discipline',
+        controller: 'DisciplineCtrl',
+        templateUrl: '../templates/discipline.html',
+        params: {
+          discipline: null
+        }
+      })
   }
 ])

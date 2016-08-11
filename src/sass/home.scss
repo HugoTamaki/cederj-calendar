@@ -1,31 +1,35 @@
 body {
   font-weight: bold;
+  background-color: #2EA3BB;
 }
 
 .discipline-content {
   margin-top: 10px;
   
   .discipline-block {
-    border: 1px solid black;
-    border-radius: 5px;
     min-height: 250px;
-    margin: 5px 0;
-    padding: 0px 10px;
+    background-color: #FFF;
+    margin: 10px 0;
+    position: relative;
 
     .header {
-      margin: 10px 0;
-      font-size: 22px;
+      background-color: #2283D0;
+      padding: 10px 10px;
+      font-size: 18px;
       line-height: 23px;
+      min-height: 70px;
     }
 
-    .ap {
-      .title {
-        font-size: 19px;
-      }
-      p {
-        margin: 0;
-        line-height: 15px;
-      }
+    .body {
+      padding: 10px 5px;
+    }
+
+    .more {
+      position: absolute;
+      bottom: 0;
+      padding: 10px 5px;
+      text-align: center;
+      width: 100%;
     }
   }
 }

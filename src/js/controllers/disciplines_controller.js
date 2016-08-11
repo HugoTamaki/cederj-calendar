@@ -33,5 +33,22 @@ app.controller('DisciplineListCtrl', [
     $scope.updateDisciplines = function () {
       $scope.disciplines = CoursesService.getFilteredDisciplines($scope.selected.course)
     }
+
+    $scope.goToDiscipline = function (discipline) {
+      $state.go('discipline', { discipline: discipline })
+    }
+  }
+])
+
+.controller('DisciplineCtrl', [
+  '$scope',
+  '$state',
+  '$stateParams',
+
+  function ($scope,
+            $state,
+            $stateParams) {
+
+    $scope.discipline = $stateParams.discipline
   }
 ])
