@@ -11,11 +11,8 @@ h6 {
   margin-top: 10px;
 
   .discipline-block {
-    background-color: #FFF;
     margin: 10px 0;
-    margin-bottom: 30px;
     position: relative;
-    padding-bottom: 25px;
 
     .header {
       background-color: #65A1D5;
@@ -24,6 +21,22 @@ h6 {
       line-height: 23px;
       min-height: 60px;
       margin-bottom: 25px;
+      box-shadow: 2px 2px 2px #888888;
+    }
+
+    .card {
+      background-color: #FFF;
+      margin: 10px 0;
+      box-shadow: 2px 2px 2px #888888;
+
+      .date {
+        font-size: 20px;
+        padding: 20px 0;
+      }
+
+      .details {
+         margin-top: 8px;
+      }
     }
   }
 }
