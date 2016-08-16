@@ -42,38 +42,41 @@
       </div>
 
       <div class="row card">
-        <div class="col-lg-1">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <div class="date">
-            {{ selected.discipline.ap1_date }}
+            <span class="day">{{ selected.discipline.ap1_date.format('DD') }}</span>
+            <span class="month">{{ selected.discipline.ap1_date.format('MMM') }}</span>
           </div>
         </div>
-        <div class="col-lg-11 details">
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 details">
           <p>Local: {{ selected.discipline.ap1_local }}</p>
           <p>Hora: {{ selected.discipline.ap1_time }}</p>
         </div>
       </div>
 
       <div class="row card">
-        <div class="col-lg-1">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <div class="date">
-            {{ selected.discipline.ap1_date }}
+            <span class="day">{{ selected.discipline.ap2_date.format('DD') }}</span>
+            <span class="month">{{ selected.discipline.ap2_date.format('MMM') }}</span>
           </div>
         </div>
-        <div class="col-lg-11 details">
-          <p>Local: {{ selected.discipline.ap1_local }}</p>
-          <p>Hora: {{ selected.discipline.ap1_time }}</p>
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 details">
+          <p>Local: {{ selected.discipline.ap2_local }}</p>
+          <p>Hora: {{ selected.discipline.ap2_time }}</p>
         </div>
       </div>
 
       <div class="row card">
-        <div class="col-lg-1">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <div class="date">
-            {{ selected.discipline.ap1_date }}
+            <span class="day">{{ selected.discipline.ap3_date.format('DD') }}</span>
+            <span class="month">{{ selected.discipline.ap3_date.format('MMM') }}</span>
           </div>
         </div>
-        <div class="col-lg-11 details">
-          <p>Local: {{ selected.discipline.ap1_local }}</p>
-          <p>Hora: {{ selected.discipline.ap1_time }}</p>
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 details">
+          <p>Local: {{ selected.discipline.ap3_local }}</p>
+          <p>Hora: {{ selected.discipline.ap3_time }}</p>
         </div>
       </div>
     </div>
