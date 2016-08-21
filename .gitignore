@@ -1,8 +1,6 @@
 node_modules/
 bower_components/
 
-www/css
-
 npm-debug.log
 .env
 .DS_Store
@@ -12,7 +10,6 @@ Session.vim
 src/lib/
 .idea/
 
-www/
 engine/
 plugins/
 platforms/
