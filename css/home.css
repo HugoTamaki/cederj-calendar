@@ -8,15 +8,28 @@ h6 {
 .discipline-content {
   margin-top: 10px; }
   .discipline-content .discipline-block {
-    background-color: #FFF;
     margin: 10px 0;
-    margin-bottom: 30px;
-    position: relative;
-    padding-bottom: 25px; }
+    position: relative; }
     .discipline-content .discipline-block .header {
       background-color: #65A1D5;
       padding: 10px 10px;
       font-size: 18px;
       line-height: 23px;
       min-height: 60px;
-      margin-bottom: 25px; }
+      margin-bottom: 25px;
+      box-shadow: 2px 2px 2px #888888; }
+    .discipline-content .discipline-block .card {
+      background-color: #FFF;
+      margin: 10px 0;
+      box-shadow: 2px 2px 2px #888888; }
+      .discipline-content .discipline-block .card .date {
+        font-size: 20px;
+        padding: 5px 0; }
+        .discipline-content .discipline-block .card .date .day {
+          display: block; }
+        .discipline-content .discipline-block .card .date .month {
+          font-size: 15px; }
+      .discipline-content .discipline-block .card .details {
+        margin-top: 12px; }
+        .discipline-content .discipline-block .card .details p {
+          margin: 0; }

@@ -3,6 +3,6 @@ app.controller('MainCtrl', [
 
   function ($state) {
 
-    $state.go('disciplines-list')
+    $state.go('home')
   }
 ])

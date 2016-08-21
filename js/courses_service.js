@@ -14,7 +14,7 @@ app.service('CoursesService', [
         this.locations = locations.map(function (location) {
           return self.getCourses(location)
         })
-        
+
         this.locations.forEach(function (location) {
           location.courses.map(function (course) {
             return self.getDisciplines(course)
@@ -33,7 +33,7 @@ app.service('CoursesService', [
       },
 
       getDisciplines: function (course) {
-        var disciplines = DataService.disciplines
+        var disciplines = formatDate(DataService.disciplines)
 
         course.disciplines = disciplines.filter(function (discipline) {
           return discipline.course === course.name && discipline.location === course.location
@@ -50,6 +50,15 @@ app.service('CoursesService', [
           return regexp.test(discipline.name)
         })
       }
+    }
+
+    function formatDate (disciplines) {
+      return disciplines.map(function (discipline) {
+        discipline.ap1_date = moment(discipline.ap1_date, "DD/MM/YYYY")
+        discipline.ap2_date = moment(discipline.ap2_date, "DD/MM/YYYY")
+        discipline.ap3_date = moment(discipline.ap3_date, "DD/MM/YYYY")
+        return discipline
+      })
     }
 
     return CoursesService
