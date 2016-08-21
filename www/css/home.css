@@ -1,0 +1,22 @@
+body {
+  font-weight: bold;
+  background-color: #C9E3F8; }
+
+h6 {
+  font-size: 16px; }
+
+.discipline-content {
+  margin-top: 10px; }
+  .discipline-content .discipline-block {
+    background-color: #FFF;
+    margin: 10px 0;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 25px; }
+    .discipline-content .discipline-block .header {
+      background-color: #65A1D5;
+      padding: 10px 10px;
+      font-size: 18px;
+      line-height: 23px;
+      min-height: 60px;
+      margin-bottom: 25px; }
