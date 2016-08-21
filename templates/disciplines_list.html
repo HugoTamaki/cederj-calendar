@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row discipline-content">
+    <div class="col-lg-12">
+      <h1>Informações sobre Cursos / Disciplinas</h1>
+
+      <div class="form-group">
+        <select id="selectLocation" ng-options="location as location.name for location in coursesService.locations" ng-model="selected.location" class="form-control" ng-change="updateSelectedLocation()">
+          <option value="">Selecione o seu Polo</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select id="selectCourse" ng-options="course as course.name for course in courses" ng-model="selected.course" class="form-control" ng-change="updateSelectedCourse()" ng-if="selected.location">
+          <option value="">Selecione o seu curso</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select id="selectCourse" ng-options="discipline as discipline.name for discipline in disciplines" ng-model="selected.discipline" class="form-control" ng-change="updateSelectedDiscipline()" ng-if="selected.course">
+          <option value="">Selecione a sua disciplina</option>
+        </select>
+      </div>
+
+      <h2 ng-if="selected.location">{{ selected.location.name }}</h1>
+
+      <h3 ng-if="selected.course">{{ selected.course.name }}</h1>
+
+      <div ng-if="selected.discipline" class="row discipline-block">
+        <div class="header">
+          <h4>{{ selected.discipline.name }}</h4>
+        </div>
+
+        <div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <h4>Informações</h4>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <p>Tutor: {{ selected.discipline.tutor }}</p>
+            </div>
+
+            <h4>Datas e locais de provas</h4>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <h6>AP1</h6>
+              <p>Local: {{ selected.discipline.ap1_local }}</p>
+              <p>Data: {{ selected.discipline.ap1_date }}</p>
+              <p>Hora: {{ selected.discipline.ap1_time }}</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <h6>AP2</h6>
+              <p>Local: {{ selected.discipline.ap2_local }}</p>
+              <p>Data: {{ selected.discipline.ap2_date }}</p>
+              <p>Hora: {{ selected.discipline.ap2_time }}</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <h6>AP3</h6>
+              <p>Local: {{ selected.discipline.ap3_local }}</p>
+              <p>Data: {{ selected.discipline.ap3_date }}</p>
+              <p>Hora: {{ selected.discipline.ap3_time }}</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <h4>Informações de ADs</h4>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h6>AD1</h6>
+              <p>Data de entrega: {{ selected.discipline.ad1_date }}</p>
+
+              <h6>AD2</h6>
+              <p>Data de entrega: {{ selected.discipline.ad2_date }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
