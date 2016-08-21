@@ -1,7 +1,6 @@
 var app = angular.module('cederj-calendar', [
   'ui.router',
-  'LocalStorageModule',
-  'angularMoment'
+  'LocalStorageModule'
 ])
 
 app.config([

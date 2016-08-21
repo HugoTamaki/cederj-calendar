@@ -11,6 +11,6 @@
     "font-awesome": "fontawesome#~4.6.3",
     "bootstrap-css-only": "~3.3.6",
     "angular-mocks": "~1.4.3",
-    "angular-moment": "~0.10.3"
+    "moment": "^2.14.1"
   }
 }
