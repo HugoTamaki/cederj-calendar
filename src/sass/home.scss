@@ -32,6 +32,8 @@ h6 {
       .date {
         font-size: 20px;
         padding: 5px 0;
+        text-align: center;
+        
         .day {
           display: block;
         }
@@ -42,10 +44,16 @@ h6 {
       }
 
       .details {
-         margin-top: 12px;
-         p {
+        margin-top: 12px;
+        
+        .type {
+          font-size: 18px;
+          padding: 10px 0;
+        }
+
+        p {
           margin: 0;
-         }
+        }
       }
     }
   }

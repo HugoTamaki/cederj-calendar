@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="row card">
+      <div class="row card" ng-if="selected.discipline.ap1_date">
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <div class="date">
             <span class="day">{{ selected.discipline.ap1_date.format('DD') }}</span>
@@ -49,12 +49,17 @@
           </div>
         </div>
         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 details">
-          <p>Local: {{ selected.discipline.ap1_local }}</p>
-          <p>Hora: {{ selected.discipline.ap1_time }}</p>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 type">
+            AP1
+          </div>
+          <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+            <p>Local: {{ selected.discipline.ap1_local }}</p>
+            <p>Hora: {{ selected.discipline.ap1_time }}</p>
+          </div>
         </div>
       </div>
 
-      <div class="row card">
+      <div class="row card" ng-if="selected.discipline.ap2_date">
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <div class="date">
             <span class="day">{{ selected.discipline.ap2_date.format('DD') }}</span>
@@ -62,12 +67,17 @@
           </div>
         </div>
         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 details">
-          <p>Local: {{ selected.discipline.ap2_local }}</p>
-          <p>Hora: {{ selected.discipline.ap2_time }}</p>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 type">
+            AP2
+          </div>
+          <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+            <p>Local: {{ selected.discipline.ap2_local }}</p>
+            <p>Hora: {{ selected.discipline.ap2_time }}</p>
+          </div>
         </div>
       </div>
 
-      <div class="row card">
+      <div class="row card" ng-if="selected.discipline.ap3_date">
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <div class="date">
             <span class="day">{{ selected.discipline.ap3_date.format('DD') }}</span>
@@ -75,8 +85,13 @@
           </div>
         </div>
         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 details">
-          <p>Local: {{ selected.discipline.ap3_local }}</p>
-          <p>Hora: {{ selected.discipline.ap3_time }}</p>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 type">
+            AP3
+          </div>
+          <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+            <p>Local: {{ selected.discipline.ap3_local }}</p>
+            <p>Hora: {{ selected.discipline.ap3_time }}</p>
+          </div>
         </div>
       </div>
     </div>

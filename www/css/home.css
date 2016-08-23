@@ -24,12 +24,16 @@ h6 {
       box-shadow: 2px 2px 2px #888888; }
       .discipline-content .discipline-block .card .date {
         font-size: 20px;
-        padding: 5px 0; }
+        padding: 5px 0;
+        text-align: center; }
         .discipline-content .discipline-block .card .date .day {
           display: block; }
         .discipline-content .discipline-block .card .date .month {
           font-size: 15px; }
       .discipline-content .discipline-block .card .details {
         margin-top: 12px; }
+        .discipline-content .discipline-block .card .details .type {
+          font-size: 18px;
+          padding: 10px 0; }
         .discipline-content .discipline-block .card .details p {
           margin: 0; }
