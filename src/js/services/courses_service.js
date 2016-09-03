@@ -15,9 +15,17 @@ app.service('CoursesService', [
           return self.getCourses(location)
         })
 
+        this.locations = this.locations.filter(function (location) {
+          return location.courses.length > 0
+        })
+
         this.locations.forEach(function (location) {
           location.courses.map(function (course) {
             return self.getDisciplines(course)
+          })
+
+          location.courses = location.courses.filter(function (course) {
+            return course.disciplines.length > 0
           })
         })
       },
