@@ -48,7 +48,7 @@
         </div>
       </div> -->
 
-      <div class="row card" ng-if="selected.discipline.ap1_date">
+      <div class="row card" ng-show="!isEmpty(selected.discipline.ap1_date)">
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <div class="date">
             <span class="day">{{ selected.discipline.ap1_date.format('DD') }}</span>
