@@ -62,9 +62,17 @@ app.service('CoursesService', [
 
     function formatDate (disciplines) {
       return disciplines.map(function (discipline) {
-        discipline.ap1_date = moment(discipline.ap1_date, "DD/MM/YYYY")
-        discipline.ap2_date = moment(discipline.ap2_date, "DD/MM/YYYY")
-        discipline.ap3_date = moment(discipline.ap3_date, "DD/MM/YYYY")
+        if (discipline.ap1_date) {
+          discipline.ap1_date = moment(discipline.ap1_date, "DD/MM/YYYY")
+        }
+
+        if (discipline.ap2_date) {
+          discipline.ap2_date = moment(discipline.ap2_date, "DD/MM/YYYY")
+        }
+
+        if (discipline.ap3_date) {
+          discipline.ap3_date = moment(discipline.ap3_date, "DD/MM/YYYY")
+        }
         return discipline
       })
     }
