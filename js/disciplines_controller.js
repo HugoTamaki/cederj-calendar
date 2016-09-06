@@ -18,6 +18,10 @@ app.controller('DisciplineListCtrl', [
     $scope.coursesService = CoursesService
     CoursesService.init()
 
+    $scope.isEmpty = function (data) {
+      return _(data).isEmpty()
+    }
+
     $scope.updateSelectedLocation = function () {
       $scope.coursesService.term = ''
       $scope.courses = $scope.selected.location.courses
