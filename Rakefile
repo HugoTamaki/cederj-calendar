@@ -9,13 +9,46 @@ task :read_csv do
 
   session = GoogleDrive::Session.from_config("config.json")
 
-  files = {
-    location: '',
-    courses: '',
-    disciplines: [
-      ''
-    ]
+  locations = [
+    {
+      location: 'Niterói',
+      courses: '',
+      disciplines: '',
+      liberate_30_min_before: false
+    }
+  ]
+
+  # loading courses
+
+  result = {
+    courses: []
   }
+
+  locations.each do |location|
+    location_name = location[:location]
+
+    ws = session.spreadsheet_by_key(location[:courses]).worksheets[0]
+
+    puts "Loading #{location_name} courses..."
+
+    (1..ws.num_rows).each do |index|
+      row = ws.rows[index]
+
+      if row
+        hash_result = {}
+
+        hash_result[:name] = row[0]
+        hash_result[:location] = location_name
+        result[:courses] << hash_result
+      end
+    end
+
+  end
+
+  File.open('data/courses.json', 'w:UTF-8') do |f|
+    f.write(result.to_json)
+  end
+
 
   # Loading disciplines
 
@@ -23,10 +56,12 @@ task :read_csv do
     disciplines: []
   }
 
-  puts 'Loading disciplines...'
+  locations.each do |location|
+    location_name = location[:location]
 
-  files[:disciplines].each do |discipline_id|
-    ws = session.spreadsheet_by_key(discipline_id).worksheets[0]
+    ws = session.spreadsheet_by_key(location[:disciplines]).worksheets[0]
+
+    puts "Loading #{location_name} disciplines..."
 
     (1..ws.num_rows).each do |index|
       row = ws.rows[index]
@@ -41,47 +76,20 @@ task :read_csv do
         hash_result[:ap2_local]    = row[4]
         hash_result[:ap2_date]     = row[5]
         hash_result[:ap2_time]     = row[6]
-        hash_result[:tutor]        = row[7]
-        hash_result[:ap3_local]    = row[8]
-        hash_result[:ap3_date]     = row[9]
-        hash_result[:ap3_time]     = row[10]
-        hash_result[:ad1_date]     = row[11]
-        hash_result[:ad2_date]     = row[12]
+        hash_result[:ap3_local]    = row[7]
+        hash_result[:ap3_date]     = row[8]
+        hash_result[:ap3_time]     = row[9]
+        hash_result[:ad1_date]     = row[10]
+        hash_result[:ad2_date]     = row[11]
+        hash_result[:tutor]        = row[12]
         hash_result[:course]       = row[13]
-        hash_result[:location]     = row[14]
+        hash_result[:location]     = location_name
         result[:disciplines]   << hash_result
       end
-
     end
   end
 
   File.open('data/disciplines.json', 'w:UTF-8') do |f|
-    f.write(result.to_json)
-  end
-
-  # Loading courses
-
-  result = {
-    courses: []
-  }
-
-  ws = session.spreadsheet_by_key(files[:courses]).worksheets[0]
-
-  puts 'Loading courses...'
-
-  (1..ws.num_rows).each do |index|
-    row = ws.rows[index]
-
-    if row
-      hash_result = {}
-
-      hash_result[:name] = row[0]
-      hash_result[:location] = row[1]
-      result[:courses] << hash_result
-    end
-  end
-
-  File.open('data/courses.json', 'w:UTF-8') do |f|
     f.write(result.to_json)
   end
 
@@ -91,22 +99,22 @@ task :read_csv do
     locations: []
   }
 
-  ws = session.spreadsheet_by_key(files[:location]).worksheets[0]
-
   puts 'Loading locations...'
 
-  (1..ws.num_rows).each do |index|
-    row = ws.rows[index]
+  locations.each do |location|
+    location_name = location[:location]
 
-    if row
-      hash_result = {}
+    puts "Saving #{location_name} location"
 
-      hash_result[:name] = row[0]
-      result[:locations] << hash_result
-    end
+    hash_result = {}
+
+    hash_result[:name] = location_name
+    hash_result[:liberate_30_min_before] = location[:liberate_30_min_before]
+    result[:locations] << hash_result
   end
 
   File.open('data/locations.json', 'w:UTF-8') do |f|
     f.write(result.to_json)
   end
+
 end
