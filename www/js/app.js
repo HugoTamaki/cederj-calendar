@@ -38,3 +38,7 @@ app.config([
       })
   }
 ])
+
+app.run(function() {
+  moment.locale('pt-BR')
+})
