@@ -34,6 +34,22 @@ app.controller('DisciplineListCtrl', [
                               []
     }
 
+    $scope.liberated = function (location, ap_date, ap_time) {
+      var time = ap_time.split(':')
+      ap_date.add(parseInt(time[0]), 'hours')
+      ap_date.add(parseInt(time[1]), 'minutes')
+
+      if (location.liberate_30_min_before) {
+        return lessThan30Minutes(ap_date)
+      } else {
+        return true
+      }
+
+      function lessThan30Minutes (date) {
+        return moment().add(30, 'minutes') > date
+      }
+    }
+
     $scope.updateDisciplines = function () {
       $scope.disciplines = CoursesService.getFilteredDisciplines($scope.selected.course)
     }
