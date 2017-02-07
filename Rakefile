@@ -69,21 +69,23 @@ task :read_csv do
       if row
         hash_result = {}
 
-        hash_result[:name]         = row[0]
-        hash_result[:ap1_local]    = row[1]
-        hash_result[:ap1_date]     = row[2]
-        hash_result[:ap1_time]     = row[3]
-        hash_result[:ap2_local]    = row[4]
-        hash_result[:ap2_date]     = row[5]
-        hash_result[:ap2_time]     = row[6]
-        hash_result[:ap3_local]    = row[7]
-        hash_result[:ap3_date]     = row[8]
-        hash_result[:ap3_time]     = row[9]
-        hash_result[:ad1_date]     = row[10]
-        hash_result[:ad2_date]     = row[11]
-        hash_result[:tutor]        = row[12]
-        hash_result[:course]       = row[13]
-        hash_result[:location]     = location_name
+        hash_result[:name]            = row[0]
+        hash_result[:ap1_local]       = row[1]
+        hash_result[:ap1_date]        = row[2]
+        hash_result[:ap1_time]        = row[3]
+        hash_result[:ap2_local]       = row[4]
+        hash_result[:ap2_date]        = row[5]
+        hash_result[:ap2_time]        = row[6]
+        hash_result[:ap3_local]       = row[7]
+        hash_result[:ap3_date]        = row[8]
+        hash_result[:ap3_time]        = row[9]
+        hash_result[:ad1_date]        = row[10]
+        hash_result[:ad2_date]        = row[11]
+        hash_result[:tutor]           = row[12]
+        hash_result[:tutorship_hour]  = row[13]
+        hash_result[:tutorship_local] = row[14]
+        hash_result[:course]          = row[15]
+        hash_result[:location]        = location_name
         result[:disciplines]   << hash_result
       end
     end
