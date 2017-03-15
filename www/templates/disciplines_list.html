@@ -10,7 +10,7 @@
   <div class="row discipline-content">
 
     <div class="form-group">
-      <select id="selectLocation" ng-options="location as location.name for location in coursesService.locations" ng-model="selected.location" class="form-control" ng-change="updateSelectedLocation()">
+      <select id="selectLocation" ng-options="location as location.name for location in locations" ng-model="selected.location" class="form-control" ng-change="updateSelectedLocation()">
         <option value="">Selecione a sua Localização</option>
       </select>
     </div>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="form-group">
-      <select id="selectCourse" ng-options="discipline as discipline.name for discipline in disciplines" ng-model="selected.discipline" class="form-control" ng-change="updateSelectedDisciplines()" ng-if="selected.course">
+      <select id="selectCourse" ng-options="discipline as discipline.discipline_name for discipline in courseDisciplines" ng-model="selected.discipline" class="form-control" ng-if="selected.course">
         <option value="">Selecione a sua Disciplina</option>
       </select>
     </div>
@@ -33,7 +33,7 @@
 
     <div ng-if="selected.discipline" class="discipline-block">
       <div class="header">
-        <h4>{{ selected.discipline.name }}</h4>
+        <h4>{{ selected.discipline.discipline_name }}</h4>
       </div>
 
       <!-- <div class="row card">
@@ -51,8 +51,8 @@
       <div class="row card" ng-show="!isEmpty(selected.discipline.ap1_date)">
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <div class="date">
-            <span class="day">{{ selected.discipline.ap1_date.format('DD') }}</span>
-            <span class="month">{{ selected.discipline.ap1_date.format('MMM') }}</span>
+            <span class="day">{{ selected.discipline.ap1_date ? moment(selected.discipline.ap1_date).format('DD') : '--' }}</span>
+            <span class="month">{{ selected.discipline.ap1_date ? moment(selected.discipline.ap1_date).format('MMM') : '--' }}</span>
           </div>
         </div>
         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 details">
@@ -69,8 +69,8 @@
       <div class="row card" ng-show="!isEmpty(selected.discipline.ap2_date)">
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <div class="date">
-            <span class="day">{{ selected.discipline.ap2_date.format('DD') }}</span>
-            <span class="month">{{ selected.discipline.ap2_date.format('MMM') }}</span>
+            <span class="day">{{ selected.discipline.ap2_date ? moment(selected.discipline.ap2_date).format('DD') : '--' }}</span>
+            <span class="month">{{ selected.discipline.ap2_date ? moment(selected.discipline.ap2_date).format('MMM') : '--' }}</span>
           </div>
         </div>
         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 details">
@@ -87,8 +87,8 @@
       <div class="row card" ng-show="!isEmpty(selected.discipline.ap3_date)">
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <div class="date">
-            <span class="day">{{ selected.discipline.ap3_date.format('DD') }}</span>
-            <span class="month">{{ selected.discipline.ap3_date.format('MMM') }}</span>
+            <span class="day">{{ selected.discipline.ap3_date ? moment(selected.discipline.ap3_date).format('DD') : '--' }}</span>
+            <span class="month">{{ selected.discipline.ap3_date ? moment(selected.discipline.ap3_date).format('MMM') : '--' }}</span>
           </div>
         </div>
         <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 details">

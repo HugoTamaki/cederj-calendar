@@ -1,45 +1,69 @@
 app.controller('DisciplineListCtrl', [
   '$scope',
   '$state',
-  'CoursesService',
+  'Location',
+  'Course',
+  'CourseDiscipline',
 
   function ($scope,
             $state,
-            CoursesService) {
+            Location,
+            Course,
+            CourseDiscipline) {
 
     $scope.selected = {
-      location: '',
-      course: ''
+      location: null,
+      course: null
     }
 
-    $scope.courses = []
-    $scope.disciplines = []
+    $scope.moment = moment
 
-    $scope.coursesService = CoursesService
-    CoursesService.init()
+    Location.get(
+      null,
+      function(response) {
+        $scope.locations = response.locations
+      },
+      function(err) {
+        console.log(err);
+      }
+    )
 
-    $scope.isEmpty = function (data) {
-      return _(data).isEmpty()
+    $scope.updateSelectedLocation = function() {
+      $scope.selected.course = null
+      $scope.selected.discipline = null
+
+      if ($scope.selected.location) {
+        Course.get(
+          {
+            locationId: $scope.selected.location.id
+          },
+          function(response) {
+            $scope.courses = response.courses
+          },
+          function(err) {
+            console.log(err)
+          }
+        )
+      }
     }
 
-    $scope.updateSelectedLocation = function () {
-      $scope.coursesService.term = ''
-      $scope.courses = $scope.selected.location.courses
-    }
+    $scope.updateSelectedCourse = function() {
+      $scope.selected.discipline = null
 
-    $scope.updateSelectedCourse = function () {
-      $scope.coursesService.term = ''
-      $scope.disciplines = $scope.selected.course ?
-                              $scope.selected.course.disciplines :
-                              []
-    }
-
-    $scope.updateDisciplines = function () {
-      $scope.disciplines = CoursesService.getFilteredDisciplines($scope.selected.course)
-    }
-
-    $scope.goToDiscipline = function (discipline) {
-      $state.go('discipline', { discipline: discipline })
+      if ($scope.selected.course) {
+        CourseDiscipline.get(
+          {
+            locationId: $scope.selected.location.id,
+            courseId: $scope.selected.course.id
+          },
+          function(response) {
+            $scope.courseDisciplines = response.course_disciplines
+          },
+          function(err) {
+            console.log(err)
+          }
+        )
+      }
     }
   }
 ])

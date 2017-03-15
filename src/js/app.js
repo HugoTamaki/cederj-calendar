@@ -1,6 +1,45 @@
+'use strict';
+
+var format = function(str, data) {
+  return str.replace(/{([^{}]+)}/g, function(match, val) {
+    var prop = data;
+    val.split('.').forEach(function(key) {
+      prop = prop[key];
+    });
+
+    return prop;
+  });
+};
+
+String.prototype.format = function(data) {
+  return format(this, data);
+};
+
+String.prototype.slugify = function() {
+  function dasherize(str) {
+    return str.trim().replace(/[-_\s]+/g, '-').toLowerCase();
+  }
+
+  function clearSpecial(str) {
+    var from  = 'ąàáäâãåæăćčĉęèéëêĝĥìíïîĵłľńňòóöőôõðøśșşšŝťțţŭùúüűûñÿýçżźž',
+      to    = 'aaaaaaaaaccceeeeeghiiiijllnnoooooooossssstttuuuuuunyyczzz';
+    to = to.split('');
+    return str.replace(/.{1}/g, function(c){
+      var index = from.indexOf(c);
+      return index === -1 ? c : to[index];
+    });
+  }
+
+  return clearSpecial(dasherize(this));
+};
+
+var appResources = angular.module('cederj-calendar.resources', []);
+
 var app = angular.module('cederj-calendar', [
   'ui.router',
-  'LocalStorageModule'
+  'ngResource',
+  'LocalStorageModule',
+  'cederj-calendar.resources'
 ])
 
 app.config([
@@ -16,28 +55,18 @@ app.config([
       .setPrefix('cederj-calendar')
 
     $stateProvider
-      .state('home', {
-        url: '/home',
-        controller: 'HomeCtrl',
-        templateUrl: '../templates/home.html'
-      })
-
       .state('disciplines-list', {
-        url: '/disciplines_list',
+        url: '/',
         controller: 'DisciplineListCtrl',
         templateUrl: '../templates/disciplines_list.html'
       })
-
-      .state('discipline', {
-        url: '/discipline',
-        controller: 'DisciplineCtrl',
-        templateUrl: '../templates/discipline.html',
-        params: {
-          discipline: null
-        }
-      })
   }
 ])
+
+app.constant('appConfig', {
+  backendURL: '@@backendURL',
+  env: '@@env'
+})
 
 app.run(function() {
   moment.locale('pt-BR')
