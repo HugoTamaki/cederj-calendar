@@ -64,8 +64,8 @@ app.config([
 ])
 
 app.constant('appConfig', {
-  backendURL: 'http://localhost:5000/api/v1',
-  env: 'development'
+  backendURL: 'http://54.208.105.99/api/v1',
+  env: 'production'
 })
 
 app.run(function() {

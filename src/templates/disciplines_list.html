@@ -36,17 +36,21 @@
         <h4>{{ selected.discipline.discipline_name }}</h4>
       </div>
 
-      <!-- <div class="row card">
+      <div class="row card">
         <div class="col-lg-12">
           <h4>Informações</h4>
 
-          <p>Tutor: {{ selected.discipline.tutor }}</p>
+          <p>Tutor: {{ selected.discipline.presencial_tutor }}</p>
 
-          <h5>AD1 - Data de entrega: {{ selected.discipline.ad1_date }}</h5>
+          <h5>AD1 - Prazo de entrega: {{ selected.discipline.ad1_deadline ? moment(selected.discipline.ad1_deadline).format('DD/MM/YYYY') : '--' }}</h5>
 
-          <h5>AD2 - Data de entrega: {{ selected.discipline.ad2_date }}</h5>
+          <h5>AD2 - Prazo de entrega: {{ selected.discipline.ad2_deadline ? moment(selected.discipline.ad2_deadline).format('DD/MM/YYYY') : '--' }}</h5>
+
+          <h5>Horário: {{ selected.discipline.tutorship_time }}</h5>
+
+          <h5>Sala: {{ selected.discipline.tutorship_room }}</h5>
         </div>
-      </div> -->
+      </div>
 
       <div class="row card" ng-show="!isEmpty(selected.discipline.ap1_date)">
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
@@ -61,7 +65,7 @@
           </div>
           <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
             <p>Local: {{ selected.discipline.ap1_local }}</p>
-            <p>Hora: {{ selected.discipline.ap1_time }}</p>
+            <p>Hora: {{ selected.discipline.ap1_date ? moment(selected.discipline.ap1_date).format('HH:mm') : '--' }}</p>
           </div>
         </div>
       </div>
@@ -79,7 +83,7 @@
           </div>
           <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
             <p>Local: {{ selected.discipline.ap2_local }}</p>
-            <p>Hora: {{ selected.discipline.ap2_time }}</p>
+            <p>Hora: {{ selected.discipline.ap2_date ? moment(selected.discipline.ap2_date).format('HH:mm') : '--' }}</p>
           </div>
         </div>
       </div>
@@ -97,20 +101,8 @@
           </div>
           <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
             <p>Local: {{ selected.discipline.ap3_local }}</p>
-            <p>Hora: {{ selected.discipline.ap3_time }}</p>
+            <p>Hora: {{ selected.discipline.ap3_date ? moment(selected.discipline.ap3_date).format('HH:mm') : '--' }}</p>
           </div>
-        </div>
-      </div>
-
-      <div class="row card" ng-show="selected.discipline.tutor">
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 details tutorship">
-          {{ selected.discipline.tutor }}
-        </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 details tutorship">
-          {{ selected.discipline.tutorship_hour }}
-        </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 details tutorship">
-          {{ selected.discipline.tutorship_local }}
         </div>
       </div>
     </div>
