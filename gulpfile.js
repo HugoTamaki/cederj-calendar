@@ -14,7 +14,8 @@ var watch         = require('gulp-watch')
 var watchSequence = require('gulp-watch-sequence')
 var minifyCss     = require('gulp-minify-css')
 var concat        = require('gulp-concat')
-var gulpif        = require('gulp-if');
+var uglify        = require('gulp-uglify')
+var gulpif        = require('gulp-if')
 var clean         = require('gulp-clean')
 var livereload    = require('gulp-livereload')
 var vinylPaths    = require('vinyl-paths')
@@ -220,6 +221,7 @@ gulp.task('moveAndConcatJS', function() {
 
   return gulp.src(sources)
              .pipe(gulpif(args.env === 'production', concat('application.js')))
+             .pipe(uglify())
              .pipe(gulp.dest(paths.dist.js))
 })
 
@@ -263,8 +265,6 @@ gulp.task('inject', function() {
 
     srcOptions    = { base: paths.dist, read: false }
     injectOptions = { ignorePath: paths.dist.path, addRootSlash: false }
-
-    console.log(sourcesJS);
 
     return gulp.src(paths.src.index)
                .pipe(gulpif(args.env !== 'production', inject(gulp.src(sourcesJS,  srcOptions), injectOptions)))
