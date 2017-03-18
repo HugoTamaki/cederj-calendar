@@ -14,6 +14,7 @@ var watch         = require('gulp-watch')
 var watchSequence = require('gulp-watch-sequence')
 var minifyCss     = require('gulp-minify-css')
 var concat        = require('gulp-concat')
+var gulpif        = require('gulp-if');
 var clean         = require('gulp-clean')
 var livereload    = require('gulp-livereload')
 var vinylPaths    = require('vinyl-paths')
@@ -218,7 +219,7 @@ gulp.task('moveAndConcatJS', function() {
   })
 
   return gulp.src(sources)
-             // .pipe(concat('application.js'))
+             .pipe(gulpif(args.env === 'production', concat('application.js')))
              .pipe(gulp.dest(paths.dist.js))
 })
 
@@ -263,8 +264,11 @@ gulp.task('inject', function() {
     srcOptions    = { base: paths.dist, read: false }
     injectOptions = { ignorePath: paths.dist.path, addRootSlash: false }
 
+    console.log(sourcesJS);
+
     return gulp.src(paths.src.index)
-               .pipe(inject(gulp.src(sourcesJS,  srcOptions), injectOptions))
+               .pipe(gulpif(args.env !== 'production', inject(gulp.src(sourcesJS,  srcOptions), injectOptions)))
+               .pipe(gulpif(args.env === 'production', inject(gulp.src(['www/js/application.js'],  srcOptions), injectOptions)))
                .pipe(inject(gulp.src(sourcesCSS, srcOptions), injectOptions))
                .pipe(gulp.dest(paths.dist.path))
   }
