@@ -1,1 +1,0 @@
-window.locations = [{"name":"Niterói","liberate_30_min_before":false}]
