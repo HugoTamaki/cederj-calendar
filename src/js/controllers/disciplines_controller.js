@@ -18,6 +18,10 @@ app.controller('DisciplineListCtrl', [
 
     $scope.moment = moment
 
+    $scope.isEmpty = function(data) {
+      return _.isEmpty(data);
+    }
+
     Location.get(
       null,
       function(response) {
