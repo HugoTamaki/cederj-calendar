@@ -1,1 +1,7 @@
-"use strict";appResources.factory("Course",["$resource","appConfig",function(o,r){return o("{0}/locations/:locationId/courses/:courseId".format([r.backendURL]))}]);
+'use strict';
+
+appResources.factory('Course', ['$resource', 'appConfig', function($resource, appConfig) {
+  return $resource(
+    '{0}/locations/:locationId/courses/:courseId'.format([appConfig.backendURL])
+  );
+}]);

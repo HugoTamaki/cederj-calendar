@@ -1,1 +1,13 @@
-app.service("DataService",[function(){return{locations:window.locations,courses:window.courses,disciplines:window.disciplines}}]);
+app.service('DataService', [
+
+  function () {
+
+    var DataService = {
+      locations: window.locations,
+      courses: window.courses,
+      disciplines: window.disciplines
+    }
+
+    return DataService
+  }
+])
